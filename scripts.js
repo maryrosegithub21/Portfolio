@@ -20,6 +20,13 @@ const navMenu = document.getElementById('nav-menu');
 hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
+
+// Ensure the menu resets when resizing the window
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 980) {
+        navMenu.classList.remove('active');
+    }
+});
 // Scroll Down to contact when click
 document.getElementById('contact-link').addEventListener('click', function(event) {
     event.preventDefault();
