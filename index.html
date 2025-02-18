@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Full Stack Developer - Mary Rose Antonio</title>
     <link rel="stylesheet" href="styles.css">
+<!-- for email send to emailJS -->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "LZFBAv3gYoQ1yjUPt",
+      });
+   })();
+</script>
 </head>
 <body>
     <header>
@@ -57,12 +68,40 @@
                 <p>In my previous roles, I have effectively managed client orders, monitored sales, and contributed to business reporting, showcasing my adaptability and strong analytical skills.</p>
                 <p>With a commitment to enhancing business operations and customer experiences, I am excited about future opportunities to grow and make a positive impact in the tech industry.</p>
                 <div class="buttons">
-                    <a href="#" class="hire-me-btn">Hire Me</a>
-                    <a href="#" class="resume-btn">Resume</a>
+                    <a href="#" class="hire-me-btn" id="hire-me-btn">Hire Me</a>
+                    <a href="https://drive.google.com/file/d/1FGFlnUf8QIyUp0frz7D80GKxBGvqw57i/view?usp=sharing" target="_blank" class="resume-btn">View My Resume</a>
                 </div>
             </div>
         </div>
         </section>
+
+
+        <!-- Hire Me Modal -->
+        <div id="hire-me-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Hire Me</h2>
+                <p>If you're interested in working together, please fill out the form below with your project details, and I'll get back to you soon.</p>
+                <form id="hire-me-form" class="contact-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+    
+                    <label for="project-description">Project Description:</label>
+                    <textarea id="project-description" name="project-description" rows="4" required></textarea>
+    
+                    <label for="budget">Budget Range:</label>
+                    <input type="text" id="budget" name="budget">
+    
+                    <label for="timeline">Timeline:</label>
+                    <input type="text" id="timeline" name="timeline">
+    
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
 
         <section class="portfolio-section" id="portfolio-section"></section>
             <h2>PORTFOLIO</h2>
@@ -303,10 +342,10 @@
         
         <div class="advertisement">
             <h3>Get Your Own Website for as Low as $499!</h3>
-            <p>Are you looking to establish a strong online presence without breaking the bank? Look no further! For as low as $300, you can have a professionally designed website tailored to your needs. Whether you're a small business, a freelancer, or just starting out, I can help you create a website that stands out.</p>
+            <p>Are you looking to establish a strong online presence without breaking the bank? Look no further! For as low as $499, you can have a professionally designed website tailored to your needs. Whether you're a small business, a freelancer, or just starting out, I can help you create a website that stands out.</p>
             <p><strong>Why Choose Me?</strong></p>
             <ul>
-                <li>Affordable pricing starting at just $300</li>
+                <li>Affordable pricing starting at just $499</li>
                 <li>Custom designs that reflect your brand</li>
                 <li>Responsive layouts for all devices</li>
                 <li>Quick turnaround time</li>

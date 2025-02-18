@@ -177,3 +177,39 @@ termsModal.addEventListener('click', function(event) {
         this.style.display = 'none'; // Hide the modal if clicked outside
     }
 });
+
+   // JavaScript to handle modal display
+   const hireMeModal = document.getElementById('hire-me-modal');
+   const hireMeBtn = document.getElementById('hire-me-btn');
+   const closeBtn = document.querySelector('.close-btn');
+
+   // Open the modal when the "Hire Me" button is clicked
+   hireMeBtn.onclick = function(event) {
+       event.preventDefault();
+       hireMeModal.style.display = 'block';
+   }
+
+   // Close the modal when the close button is clicked
+   closeBtn.onclick = function() {
+       hireMeModal.style.display = 'none';
+   }
+
+   // Close the modal when clicking outside of the modal content
+   window.onclick = function(event) {
+       if (event.target == hireMeModal) {
+           hireMeModal.style.display = 'none';
+       }
+   }
+
+       // Handle form submission
+       document.getElementById('hire-me-form').onsubmit = function(event) {
+        event.preventDefault();
+
+        emailjs.sendForm('service_jy1hdze', 'template_muwyafu', this)
+            .then(function() {
+                alert('Your message was successfully sent. I will get back to you within an hour.');
+                hireMeModal.style.display = 'none';
+            }, function(error) {
+                alert('Failed to send the message. Please try again later.');
+            });
+    }
