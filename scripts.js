@@ -189,7 +189,20 @@ termsModal.addEventListener('click', function(event) {
             .then(function() {
                 alert('Your message was successfully sent. I will get back to you within an hour.');
                 hireMeModal.style.display = 'none';
+                document.getElementById('hire-me-form').reset(); 
             }, function(error) {
                 alert('Failed to send the message. Please try again later.');
             });
     }
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+
+        emailjs.sendForm('service_jy1hdze', 'template_muwyafu', this)
+            .then(function() {
+                alert('Your message was successfully sent. I will get back to you within an hour.');
+                document.getElementById('contact-form').reset(); 
+            }, function(error) {
+                alert('Failed to send the message. Please try again later.');
+            });
+    });
