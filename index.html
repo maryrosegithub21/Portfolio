@@ -11,42 +11,46 @@
         <div class="logo">
             <img src="images/logo.png" alt="Logo">
         </div>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
         <nav>
-            <ul>
+            <ul id="nav-menu">
                 <li><a href="#"class="contact-btn">Home</a></li>
-                <li><a href="#"class="contact-btn">About Me</a></li>
-                <li><a href="#"class="contact-btn">Portfolio</a></li>
-                <li><a href="#"class="contact-btn">Services</a></li>
-                <li><a href="#" class="contact-btn">Experience</a></li>
-                <li><a href="#" class="contact-btn">Contact</a></li>
+                <li><a href="#"class="contact-btn" id="about-link">About Me</a></li>
+                <li><a href="#"class="contact-btn" id="portfolio-link">Portfolio</a></li>
+                <li><a href="#"class="contact-btn"  id="services-link">Services</a></li>
+                <li><a href="#" class="contact-btn" id="experience-link">Experience</a></li>
+                <li><a href="#" class="contact-btn" id="contact-link">Contact</a></li>
             </ul>
         </nav>
     </header>
     <main>
         
-        <section class="about-me">
+        <section class="about-me" >
 
             <div class="intro">
                 <p>I'm Mary Rose Antonio</p>
                 <h1>Full Stack Software Developer</h1>
-                <a href="#" class="projects-btn">Previous Projects</a>
+                <a href="#" class="projects-btn" id="previous-projects-btn">Previous Projects</a>
             </div>
-            <div class="about-me-container">
+            <div class="about-me-container" id="about-content">
                 <div class="image-container">
             <div class="profile-pic">
                 <img src="images/profile.png" alt="Mary Rose Antonio">
                 <div class="border-overlay"></div>
             </div>
         </div>
-            <div class="about-content">
+            <div class="about-content"  >
                 <h2>About Me</h2>
                 <p>Hello! I'm Mary Rose Antonio, a dedicated professional with a passion for technology and a strong foundation in computer programming and procurement. I hold a Bachelor of Science degree in Computer Science from Pasig University in the Philippines and have honed my skills as a Full Stack Developer through my training at Mission Ready New Zealand.</p>
                 <p>With extensive experience in multi-tasking across various business functions, I excel in delivering high-quality results. My technical expertise includes:</p>
                 <ul>
                     <li>Front-End Development: HTML5, CSS3, JavaScript, React, PHP</li>
                     <li>Back-End Development: Node.js, Express, CORS</li>
-                    <li>Database Management: MySQL Workbench, MongoDB</li>
+                    <li>Database Management: MySQL Workbench, MongoDB, Google Cloud, AWS</li>
                     <li>Tools: Visual Studio Code, Eclipse, Git, Docker, JIRA, Figma, Canva</li>
                 </ul>
                 <p>I have successfully developed responsive web applications, including a project library and an ongoing project for a church organization, utilizing my skills in both front-end and back-end technologies.</p>
@@ -60,23 +64,37 @@
         </div>
         </section>
 
-        <section class="portfolio-section"></section>
+        <section class="portfolio-section" id="portfolio-section"></section>
             <h2>PORTFOLIO</h2>
-            <!-- <div class="portfolio-tabs">
-                <a href="#" class="tab">Mobile App</a>
-                <a href="#" class="tab">Website</a>
-                <a href="#" class="tab">Desktop</a>
-                <a href="#" class="tab">Other Projects</a>
-            </div> -->
-            <div class="project">
+            <div class="portfolio-tabs">
+                <a href="#" class="tab" id="tab-project-one">Project One</a>
+                <a href="#" class="tab" id="tab-project-two">Project Two</a>
+                <!-- <a href="#" class="tab">Desktop</a>
+                <a href="#" class="tab">Other Projects</a> -->
+            </div>
+            <div class="project" id="project-one">
                 <h3>PROJECT 1</h3>
                 <h4>MCGI FEAST PORTAL</h4>
-                <p>The MCGI Christchurch Portal is a comprehensive web application designed to facilitate the online activities of the MCGI Christchurch community. This portal provides a seamless user experience for members to log in, sign up, and access various features and information about the community. The MCGI Christchurch Portal is a robust and user-friendly application that enhances the online experience for community members. By leveraging modern web technologies and best practices, the portal ensures secure and efficient access to essential features and information.</p>
+                <p>The MCGI Portal is a comprehensive web application designed to facilitate the online activities of the MCGI community. This portal provides a seamless user experience for members to log in, sign up, and access various features and information about the community. The MCGI Portal is a robust and user-friendly application that enhances the online experience for community members. By leveraging modern web technologies and best practices, the portal ensures secure and efficient access to essential features and information.</p>
                 <a href="#" id="read-more-btn" class="read-more">Read more</a>
                 <div class="project-image">
-                    <img src="images/project1.png" alt="Project 1">
+                    <img src="images/project1.png" alt="Project 1" id="project1-video-thumbnail">
                 </div>
             </div>
+
+            <!-- Video Modal for Project 1 -->
+<div id="project1-video-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="video-container">
+            <video controls>
+                <source src="videos/Project1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</div>
+
 <!-- modal in project 1 -->
             <div id="key-features-modal" class="modal">
                 <div class="modal-content">
@@ -86,10 +104,10 @@
                         <li><strong>User Authentication</strong>:
                             <ul>
                                 <li><strong>Login</strong>: Members can log in using their email, password, and church ID. The login process includes validation and error handling to ensure secure access.</li>
-                                <li><strong>Sign Up</strong>: New members can sign up by providing their details, which are then stored securely in the backend database.</li>
+                                <li><strong>Register</strong>: Guest can register by providing their details, which are then stored securely in the backend database.</li>
                             </ul>
                         </li>
-                        <li><strong>Dynamic Routing</strong>: The application uses `react-router-dom` to manage navigation between different pages. This includes routes for the home page, login page, and sign-up page.</li>
+                        <li><strong>Dynamic Routing</strong>: The application uses `react-router-dom` to manage navigation between different pages. This includes routes for the home page, login page, embeded registration, search engine and printing data.</li>
                         <li><strong>Home Page Components</strong>:
                             <ul>
                                 <li><strong>NavBar</strong>: A navigation bar that provides easy access to different sections of the website.</li>
@@ -102,17 +120,71 @@
                         </li>
                         <li><strong>Backend Integration</strong>:
                             <ul>
-                                <li>The backend is built using Node.js and MongoDB. The login information is securely stored and managed using Mongoose schemas.</li>
+                                <li>The backend is built using Node.js and Google Drive. The login information is securely stored and managed using user authentication.</li>
+                                <li>The system is designed to be scalable and easily extendable for additional features and services.</li>
                                 <li>The login API endpoint validates user credentials and provides appropriate responses based on the authentication status.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Live Link</strong>:
+                            <ul>
+                               <a href="https://mcgi-app-450700.uc.r.appspot.com/">Mcgi Feast Of God</a>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
-            
+            <div class="project" id="project-two">
+                <h3>PROJECT 2 </h3>
+                <h4>Nomad Nodes</h4>
+                <p>The Nomad Nodes or Wifi Finder App is a comprehensive mobile and web application designed to facilitate the Wifi activities of the user. This application serves as a robust tool for locating and connecting to available Wifi networks, ensuring users can stay connected wherever they are. The project is structured as a Turborepo, leveraging modern technologies to deliver a seamless cross-platform experience. It includes a React Native app built with Expo for mobile users and a Next.js app utilizing react-native-web for web users. Both applications share a common component library, @repo/ui, which ensures a consistent user interface across platforms. </p>
+                <a href="#" id="read-more-btn-project2" class="read-more">Read more</a>
+                <div class="project-image">
+                    <img src="images/Project2.png" alt="Project 2" id="video-thumbnail">
+                </div>
+            </div>
+            <!-- Video Modal -->
+<div id="video-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="video-container">
+        <video controls>
+            <source src="videos/Project2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        </div>
+    </div>
+</div>
+        <!-- Modal for Project 2 -->
+<div id="project2-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Key Features of Nomad Nodes or Wifi Finder App</h2>
+        <ul>
+            <li><strong>Responsive Cross-Platform Design</strong>: The app is designed to work seamlessly on both mobile and web platforms, providing a consistent user experience regardless of the device.</li>
+            <li><strong>Relational Database Implementation</strong>: A well-structured database supports the app's functionality, enabling efficient data management and retrieval.</li>
+            <li><strong>Mapping Feature</strong>: Users can easily navigate from their current location to various Wifi hotspots, thanks to an integrated mapping feature that provides routing capabilities.</li>
+            <li><strong>User Interface Management</strong>: The app offers an intuitive and user-friendly interface, making it easy for users to find and connect to Wifi networks.</li>
+            <li><strong>Integration of Routers and Modems</strong>: The app supports integration with various routers and modems, enhancing connectivity options for users.</li>
+            <li><strong>Project Management Tools</strong>: The development process was streamlined using tools like Trello for task management and Discord/Slack for team communication, ensuring efficient collaboration.</li>
+            <li><strong>Add-On Features</strong>: The app includes additional functionalities such as parental controls and ad-blocking capabilities, providing users with enhanced control over their internet experience.</li>
+        </ul>
+        <p>Overall, the Nomad Nodes or Wifi Finder App is a versatile and powerful tool for users seeking reliable Wifi connectivity, backed by a robust technical foundation and a focus on user-centric design.</p>
+        <li><strong>Github Repository</strong>:
+            <ul>
+               <a href="https://github.com/maryrosegithub21/WIFI-FINDER-APP-FRONT.git">Front End Repository</a>
+            </ul>
+            <ul>
+                <a href="https://github.com/maryrosegithub21/WIFI-FINDER-APP-BACKEND.git">Back End Repository</a>
+            </ul>
+        </li>
+    </div>
+</div>
+
+
+
         </section>
 <!-- Services -->
-<section class="services"></section>
+<section class="services" id="services-section"></section>
     <h2>Services</h2>
     <div class="service-container">
         <div class="service-box">
@@ -184,7 +256,7 @@
 </section>
 
 <!-- EXPERIENCE -->
-<section class="experience">
+<section class="experience" id="experience-section" >
     <h1>EXPERIENCE</h1>
     <div class="grid">
         <div class="item">
@@ -224,7 +296,7 @@
 
 
 <!-- Contact Section -->
-<div class="contact-section">
+<div class="contact-section"  id="contact">
     <div class="contact-container">
         <div class="contact-info">
             <h2>Drop Me a Message</h2>
@@ -236,11 +308,10 @@
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>maryroseantoniowork21@gmail.com</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>81 Wildberry Street Woolston, Christchurch, New Zealand</span>
+                    <span>Christchurch, New Zealand</span>
                 </div>
             </div>
         </div>
@@ -255,7 +326,8 @@
     </div>
     <div class="footer">
         <div class="footer-content">
-            <p>2024 - Mary Antonio, All rights reserved</p>
+            <p>Copyright 2025 | Mary Antonio | All rights reserved</p>
+            <a href="#">Terms and Conditions</a>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -270,20 +342,9 @@
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     </main>
-    <script>
-        document.getElementById('read-more-btn').onclick = function() {
-            document.getElementById('key-features-modal').style.display = 'block';
-        }
-    
-        document.getElementsByClassName('close-btn')[0].onclick = function() {
-            document.getElementById('key-features-modal').style.display = 'none';
-        }
-    
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('key-features-modal')) {
-                document.getElementById('key-features-modal').style.display = 'none';
-            }
-        }
-    </script>
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Link to external JavaScript file -->
+    <script src="scripts.js"></script>
 </body>
 </html>

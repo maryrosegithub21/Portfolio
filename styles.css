@@ -9,13 +9,20 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    /* background-color: #0d1b2a; */
+    padding: 20px 60px;
+    padding-right: 20px;
+    padding-left: 30px;
+    position: fixed;
+    top: 0;
+    width: 85%;
+    background-color: #0d1b2a; /* Ensure background color covers the header */
+    z-index: 3; /* Ensure header is above other content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
 }
 
 .logo img {
-    height: 80px; /* Adjust the height as needed */
-    width: auto; /* Maintain aspect ratio */
+    height: 80px;
+    width: auto;
 }
 
 nav ul {
@@ -59,7 +66,7 @@ main {
 .intro {
     text-align: center;
     padding: 50px 20px;
-    z-index: 100;
+    z-index: 1; /* Lower z-index to ensure nav menu is on top */
     width: 100%;
 }
 
@@ -88,12 +95,12 @@ main {
 .projects-btn:hover {
     opacity: 0.8;
 }
-.about-me-container{
+
+.about-me-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 50px 20px;
-    /* background-color: #1e1e1e; */
     border-radius: 10px;
     width: 80%;
 }
@@ -104,7 +111,6 @@ main {
     justify-content: flex-start;
     align-items: center;
     padding: 50px 20px;
-    /* background-color: #1e1e1e; */
     border-radius: 10px;
     margin: 20px;
     width: 100%;
@@ -120,27 +126,26 @@ main {
 .image-container {
     position: relative;
     display: inline-block;
-    margin: 50px; /* Adjust as needed */
+    margin: 50px;
 }
 
 .image-container img {
     display: block;
-    border-radius: 10px; /* Rounded corners for the image */
+    border-radius: 10px;
     z-index: 1;
     position: relative;
 }
 
 .border-overlay {
     position: absolute;
-    top: 2rem; /* Adjust as needed */
-    left: 2rem; /* Adjust as needed */
+    top: 2rem;
+    left: 2rem;
     width: 20rem;
     height: 17rem;
-    border: 10px solid #00aaff; /* Blue border color */
-    border-radius: 10px; /* Rounded corners for the border */
+    border: 10px solid #00aaff;
+    border-radius: 10px;
     z-index: 0;
 }
-
 
 .about-content h2 {
     font-size: 2em;
@@ -170,30 +175,16 @@ main {
 .hire-me-btn, .resume-btn {
     display: inline-block;
     padding: 10px 20px;
-   text-decoration: none;
+    text-decoration: none;
     transition: background-color 0.3s;
     background: linear-gradient(90deg, #00aaff, #6a00ff);
-      border-radius: 20px;
+    border-radius: 20px;
     color: white;
     font-weight: bold;
 }
 
 .hire-me-btn:hover, .resume-btn:hover {
     background-color: #0056b3;
-    
-}
-
-
-/* portfolio */
-
-.projects-btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 10px 20px;
-    /* background-color: #e43f5a; */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
 }
 
 .portfolio-section {
@@ -227,6 +218,11 @@ main {
     max-width: 800px;
     margin: 0 auto;
     text-align: left;
+    display:none;
+}
+
+.active {
+    display: block; /* Show the active project */
 }
 
 .project h3 {
@@ -250,7 +246,6 @@ main {
     color: white;
     font-weight: bold;
     text-decoration: none;
-
 }
 
 .modal {
@@ -262,15 +257,18 @@ main {
     width: 100%;
     height: 100%;
     overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 .modal-content {
-    /* background-color: #fefefe; */
+    background-color: #fefefe;
     background: linear-gradient(90deg, #00aaff, #6a00ff);
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    max-width: 800px;
 }
 
 .close-btn {
@@ -287,20 +285,33 @@ main {
     cursor: pointer;
 }
 
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+}
 
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
 .project-image {
     text-align: center;
     margin-top: 20px;
+    cursor: pointer;
 }
+
 
 .project-image img {
     max-width: 100%;
     border: 10px solid #00aaff;
     border-radius: 10px;
 }
-
-/* services */
 
 .services {
     background-color: #0a0a23;
@@ -350,10 +361,8 @@ main {
     line-height: 1.5;
 }
 
-/* Experience */
 .experience {
     margin-top: 3rem;
-   
     text-align: center;
 }
 
@@ -383,8 +392,6 @@ h1 {
     margin: 0;
     font-size: 16px;
 }
-
-/* contact section */
 
 .contact-section {
     margin-top: 4rem;
@@ -487,4 +494,97 @@ h1 {
     color: white;
     font-size: 1.5em;
     text-decoration: none;
+}
+
+/* Enhanced Responsive styles */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5rem;
+    }
+}
+
+@media (max-width: 980px) {
+    .hamburger {
+        display: flex;
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 3;
+    }
+
+    .hamburger div {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(13, 27, 42, 0.9);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000; /* Ensure menu is above all other content */
+        margin-top: 100px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .about-me-container, .service-container, .grid, .contact-container {
+        flex-direction: column;
+    }
+
+    .service-box, .item, .contact-info, .contact-form {
+        flex: 1 1 100%;
+    }
+
+    .contact-info, .contact-details, .contact-form {
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo img {
+        max-width: 100px;
+    }
+
+    .intro h1 {
+        font-size: 1.5em;
+    }
+
+    .buttons a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
