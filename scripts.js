@@ -13,20 +13,43 @@ window.onclick = function(event) {
         document.getElementById('key-features-modal').style.display = 'none';
     }
 }
-// JavaScript to toggle the menu
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    // Toggle the navigation menu
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    // Close the menu and scroll to the section when a nav link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // Close the menu after clicking a link
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Ensure the menu resets when resizing the window
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 980) {
+            navMenu.classList.remove('active');
+        }
+    });
 });
 
-// Ensure the menu resets when resizing the window
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 980) {
-        navMenu.classList.remove('active');
-    }
-});
+
+
 // Scroll Down to contact when click
 document.getElementById('contact-link').addEventListener('click', function(event) {
     event.preventDefault();
