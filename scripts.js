@@ -83,12 +83,20 @@ document.querySelector('#project2-modal .close-btn').onclick = function() {
 document.getElementById('project2-modal').style.display = 'none';
 }
 
+// // Close the modal when clicking outside of the modal content
+// window.onclick = function(event) {
+// if (event.target == document.getElementById('project2-modal')) {
+//     document.getElementById('project2-modal').style.display = 'none';
+// }
+// }
+
 // Close the modal when clicking outside of the modal content
-window.onclick = function(event) {
-if (event.target == document.getElementById('project2-modal')) {
-    document.getElementById('project2-modal').style.display = 'none';
-}
-}
+document.getElementById('project2-modal').addEventListener('click', function(event) {
+    if (event.target == this) {
+        this.style.display = 'none';
+    }
+});
+
 
 // other functionality for Project 2 video modal
 var videoModal = document.getElementById('video-modal');
@@ -106,12 +114,19 @@ videoElement.pause(); // Pause the video when the modal is closed
 videoModal.style.display = 'none';
 }
 
-window.onclick = function(event) {
-if (event.target == videoModal) {
-videoElement.pause(); // Pause the video when clicking outside the modal
-videoModal.style.display = 'none';
-}
-}
+// window.onclick = function(event) {
+// if (event.target == videoModal) {
+// videoElement.pause(); // Pause the video when clicking outside the modal
+// videoModal.style.display = 'none';
+// }
+// }
+
+videoModal.addEventListener('click', function(event) {
+    if (event.target == this) {
+        videoElement.pause(); // Pause the video when clicking outside the modal
+        this.style.display = 'none';
+    }
+});
 
 // Other functionality for Project 1 video modal
 var project1VideoModal = document.getElementById('project1-video-modal');
@@ -129,9 +144,36 @@ project1VideoElement.pause(); // Pause the video when the modal is closed
 project1VideoModal.style.display = 'none';
 }
 
-window.onclick = function(event) {
-if (event.target == project1VideoModal) {
-project1VideoElement.pause(); // Pause the video when clicking outside the modal
-project1VideoModal.style.display = 'none';
+// window.onclick = function(event) {
+// if (event.target == project1VideoModal) {
+// project1VideoElement.pause(); // Pause the video when clicking outside the modal
+// project1VideoModal.style.display = 'none';
+// }
+// }
+
+project1VideoModal.addEventListener('click', function(event) {
+    if (event.target == this) {
+        project1VideoElement.pause(); // Pause the video when clicking outside the modal
+        this.style.display = 'none';
+    }
+});
+
+// Terms and Conditions modal functionality
+const termsModal = document.getElementById('terms-modal');
+const termsLink = document.getElementById('terms-link');
+const termsCloseBtn = document.querySelector('#terms-modal .close-btn');
+
+termsLink.onclick = function(event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    termsModal.style.display = 'block'; // Show the modal
 }
+
+termsCloseBtn.onclick = function() {
+    termsModal.style.display = 'none'; // Hide the modal
 }
+
+termsModal.addEventListener('click', function(event) {
+    if (event.target == this) {
+        this.style.display = 'none'; // Hide the modal if clicked outside
+    }
+});
