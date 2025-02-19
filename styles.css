@@ -183,8 +183,54 @@ main {
     font-weight: bold;
 }
 
+
+.hire-me-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.hire-me-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.hire-me-form input,
+.hire-me-form textarea {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hire-me-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
 .hire-me-btn:hover, .resume-btn:hover {
     background-color: #0056b3;
+}
+
+@media (min-width: 600px) {
+    .hire-me-form .form-group {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .hire-me-form label {
+        width: 100px;
+        margin-bottom: 0;
+    }
+
+    .hire-me-form input,
+    .hire-me-form textarea {
+        flex: 1;
+    }
 }
 
 .portfolio-section {
