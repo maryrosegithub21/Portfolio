@@ -13,7 +13,6 @@ window.onclick = function(event) {
         document.getElementById('key-features-modal').style.display = 'none';
     }
 }
-
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
