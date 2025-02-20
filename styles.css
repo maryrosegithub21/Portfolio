@@ -358,13 +358,29 @@ main {
     text-align: center;
     margin-top: 20px;
     cursor: pointer;
+    position: relative;
+    
 }
 
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    opacity: 0.8;
+    cursor: pointer;
+    color: #001566;
+    pointer-events: none;
+}
 
 .project-image img {
     max-width: 100%;
     border: 10px solid #00aaff;
     border-radius: 10px;
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .services {
