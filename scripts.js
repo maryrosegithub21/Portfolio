@@ -128,7 +128,7 @@ var videoElement = videoModal.querySelector('video');
 var videoCloseBtn = document.querySelector('#video-modal .close-btn');
 
 videoThumbnail.onclick = function() {
-videoModal.style.display = 'block';
+videoModal.style.display = 'flex';
 videoElement.play(); // Play the video when the modal is opened
 }
 
@@ -151,7 +151,7 @@ var project1VideoElement = project1VideoModal.querySelector('video');
 var project1VideoCloseBtn = project1VideoModal.querySelector('.close-btn');
 
 project1VideoThumbnail.onclick = function() {
-project1VideoModal.style.display = 'block';
+project1VideoModal.style.display = 'flex';
 project1VideoElement.play(); // Play the video when the modal is opened
 }
 
