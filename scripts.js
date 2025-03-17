@@ -1,6 +1,6 @@
  // Existing modal functionality for Project 1 and Project 2
  document.getElementById('read-more-btn').onclick = function() {
-    document.getElementById('key-features-modal').style.display = 'block';
+    document.getElementById('key-features-modal').style.display = 'flex';
 }
 
 // Close the modal when the close button is clicked
@@ -104,7 +104,7 @@ document.getElementById('project-one').classList.add('active');
  // Open the modal for Project 2
 document.getElementById('read-more-btn-project2').onclick = function(event) {
 event.preventDefault(); // Prevent default anchor behavior
-document.getElementById('project2-modal').style.display = 'block';
+document.getElementById('project2-modal').style.display = 'flex';
 }
 
 // Close the modal when the close button is clicked
@@ -192,10 +192,15 @@ termsModal.addEventListener('click', function(event) {
    const hireMeBtn = document.getElementById('hire-me-btn');
    const closeBtn = document.querySelector('.close-btn');
 
+   document.addEventListener('DOMContentLoaded', function() {
+    const hireMeBtn = document.getElementById('hire-me-btn');
+    const hireMeModal = document.getElementById('hire-me-modal');
+    const closeBtn = hireMeModal.querySelector('.close-btn');
+
    // Open the modal when the "Hire Me" button is clicked
    hireMeBtn.onclick = function(event) {
        event.preventDefault();
-       hireMeModal.style.display = 'block';
+       hireMeModal.style.display = 'flex';
    }
 
    // Close the modal when the close button is clicked
@@ -209,6 +214,7 @@ termsModal.addEventListener('click', function(event) {
            hireMeModal.style.display = 'none';
        }
    }
+});
 
        // Handle form submission
        document.getElementById('hire-me-form').onsubmit = function(event) {
@@ -223,6 +229,7 @@ termsModal.addEventListener('click', function(event) {
                 alert('Failed to send the message. Please try again later.');
             });
     }
+
 
     document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault(); 
