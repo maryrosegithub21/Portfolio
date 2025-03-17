@@ -9,19 +9,7 @@ body {
 }
 
 header {
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 60px;
-    padding-right: 20px;
-    padding-left: 30px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 3; /* Ensure header is above other content */
-    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); Optional: Add shadow for better visibility */ 
-
-    display: flex;
+       display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px; /* Adjust padding for better responsiveness */
@@ -679,7 +667,7 @@ h1 {
 
     nav ul {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         width: 100%;
     }
 
