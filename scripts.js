@@ -254,7 +254,7 @@ termsModal.addEventListener('click', function(event) {
             let aboutText = aboutContent.textContent.replace(/Hire Me|Resume|Linked|Github/g, '').trim();
             aboutText = aboutText.replace("About Me", ""); // Remove "About Me" heading
             // const speech = new SpeechSynthesisUtterance("Kia Ora. " + aboutText.replace("About Me", "") + " Thank you, and please make an appointment to hire me.");
-            const speech = new SpeechSynthesisUtterance("Kia Ora. " + aboutText + " Thank you, and please make an appointment to hire me.");
+            const speech = new SpeechSynthesisUtterance("Kia Ora. " + aboutText + " Let's Work Together and Thank you. To get Started, Please make an appointment to understand your vision and discuss how we can make it a reality.");
             speech.rate = 0.9; // Adjust the speaking rate (0.1 to 10, default is 1)
             speech.pitch = 1; // Adjust the pitch (0 to 2, default is 1)
 
