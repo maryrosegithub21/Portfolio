@@ -1,5 +1,5 @@
- // Existing modal functionality for Project 1 and Project 2
- document.getElementById('read-more-btn').onclick = function() {
+// Existing modal functionality for Project 1 and Project 2
+document.getElementById('read-more-btn').onclick = function() {
     document.getElementById('key-features-modal').style.display = 'flex';
 }
 
@@ -242,3 +242,41 @@ termsModal.addEventListener('click', function(event) {
                 alert('Failed to send the message. Please try again later.');
             });
     });
+
+    // Function to speak the about content
+    let hasSpoken = false; // Flag to track if the content has been spoken
+
+    function speakAboutContent() {
+        if (!hasSpoken) {
+            const aboutContent = document.getElementById('about-content');
+            const aboutText = aboutContent.textContent;
+            const speech = new SpeechSynthesisUtterance("Kia Ora. " + aboutText + " Thank you, and please make an appointment to hire me.");
+            speech.rate = 0.9; // Adjust the speaking rate (0.1 to 10, default is 1)
+            speech.pitch = 1; // Adjust the pitch (0 to 2, default is 1)
+
+            // Attempt to select a female voice
+            const voices = window.speechSynthesis.getVoices();
+            let femaleVoice = null;
+            for (let i = 0; i < voices.length; i++) {
+                if (voices[i].name.toLowerCase().includes('female')) {
+                    femaleVoice = voices[i];
+                    break;
+                }
+            }
+
+            if (femaleVoice) {
+                speech.voice = femaleVoice;
+            }
+
+            window.speechSynthesis.speak(speech);
+            hasSpoken = true; // Set the flag to true after speaking
+        }
+    }
+
+    // Trigger on Page Load (integrated into existing DOMContentLoaded)
+    document.addEventListener('DOMContentLoaded', function() {
+        // Existing modal functionality...
+        speakAboutContent(); // Call the function to speak the content
+    });
+
+    
