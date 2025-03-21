@@ -243,54 +243,71 @@ termsModal.addEventListener('click', function(event) {
             });
     });
 
-    // Function to speak the about content
-    let hasSpoken = false; // Flag to track if the content has been spoken
+   let speech = null; // Store the SpeechSynthesisUtterance object
+let isSpeaking = false; // Flag to track if the content is currently being spoken
 
-    function speakAboutContent() {
-        if (!hasSpoken) {
-            const aboutContent = document.getElementById('about-content');
-            // Remove the buttons' content from the text to be spoken
-            let aboutText = aboutContent.textContent.replace(/Hire Me|Resume|Linked|Github/g, '').trim();
-            aboutText = aboutText.replace("About Me", ""); // Remove "About Me" heading
-            const speech = new SpeechSynthesisUtterance("Kia Ora. " + aboutText + " Let's Work Together and Thank you. To get Started, Please make an appointment to understand your vision and discuss how we can make it a reality.");
-            speech.rate = 0.9; // Adjust the speaking rate (0.1 to 10, default is 1)
-            speech.pitch = 1; // Adjust the pitch (0 to 2, default is 1)
+// Function to speak the about content
+function speakAboutContent() {
+    const aboutContent = document.getElementById('about-content');
+    // Remove the buttons' content from the text to be spoken
+    let aboutText = aboutContent.textContent.replace(/Hire Me|Resume|Linked|Github/g, '').trim();
+    aboutText = aboutText.replace("About Me", ""); // Remove "About Me" heading
+    const fullText = "Kia Ora. " + aboutText + " Let's Work Together and Thank you. To get Started, Please make an appointment to understand your vision and discuss how we can make it a reality.";
 
-            // Attempt to select a female voice
-            const voices = window.speechSynthesis.getVoices();
-            let femaleVoice = null;
-            for (let i = 0; i < voices.length; i++) {
-                if (voices[i].name.toLowerCase().includes('female')) {
-                    femaleVoice = voices[i];
-                    break;
-                }
+    if (!isSpeaking) {
+        // If not already speaking, start speaking
+        speech = new SpeechSynthesisUtterance(fullText);
+        speech.rate = 0.9; // Adjust the speaking rate (0.1 to 10, default is 1)
+        speech.pitch = 1; // Adjust the pitch (0 to 2, default is 1)
+
+        // Attempt to select a female voice
+        const voices = window.speechSynthesis.getVoices();
+        let femaleVoice = null;
+        for (let i = 0; i < voices.length; i++) {
+            if (voices[i].name.toLowerCase().includes('female')) {
+                femaleVoice = voices[i];
+                break;
             }
-
-            if (femaleVoice) {
-                speech.voice = femaleVoice;
-            }
-
-            window.speechSynthesis.speak(speech);
-            hasSpoken = true; // Set the flag to true after speaking
-             // Store in session storage
-             sessionStorage.setItem('aboutContentSpoken', 'true');
         }
+
+        if (femaleVoice) {
+            speech.voice = femaleVoice;
+        }
+
+        window.speechSynthesis.speak(speech);
+        isSpeaking = true;
+        sessionStorage.setItem('aboutContentSpoken', 'true'); // Store in session storage
+        document.getElementById('speak-icon').classList.remove('fa-volume-up');
+        document.getElementById('speak-icon').classList.add('fa-pause');
+    } else {
+        // If already speaking, stop speaking
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        document.getElementById('speak-icon').classList.remove('fa-pause');
+        document.getElementById('speak-icon').classList.add('fa-volume-up');
+    }
+}
+
+// Trigger on Page Load (integrated into existing DOMContentLoaded)
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if the content has already been spoken during this session
+    if (sessionStorage.getItem('aboutContentSpoken') !== 'true') {
+        // Existing modal functionality...
+        // speakAboutContent(); // Remove this line
     }
 
-    // Trigger on Page Load (integrated into existing DOMContentLoaded)
-    document.addEventListener('DOMContentLoaded', function() {
-          // Check if the content has already been spoken during this session
-         if (sessionStorage.getItem('aboutContentSpoken') !== 'true') {
-        // Existing modal functionality...
-        // speakAboutContent(); // Call the function to speak the content
-         }
-          // Get the speak button element
+    // Get the speak button element
     const speakButton = document.getElementById('speak-button');
 
     // Attach the speakAboutContent function to the button click
     speakButton.addEventListener('click', function() {
         speakAboutContent();
     });
-    });
 
-    
+    // Add an event listener to detect when speech ends
+    window.speechSynthesis.addEventListener('end', () => {
+        isSpeaking = false;
+        document.getElementById('speak-icon').classList.remove('fa-pause');
+        document.getElementById('speak-icon').classList.add('fa-volume-up');
+    });
+});
