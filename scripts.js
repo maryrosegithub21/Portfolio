@@ -280,10 +280,17 @@ termsModal.addEventListener('click', function(event) {
     // Trigger on Page Load (integrated into existing DOMContentLoaded)
     document.addEventListener('DOMContentLoaded', function() {
           // Check if the content has already been spoken during this session
-          if (sessionStorage.getItem('aboutContentSpoken') !== 'true') {
-            // Existing modal functionality...
-            speakAboutContent(); // Call the function to speak the content
+         if (sessionStorage.getItem('aboutContentSpoken') !== 'true') {
+        // Existing modal functionality...
+        // speakAboutContent(); // Call the function to speak the content
          }
+          // Get the speak button element
+    const speakButton = document.getElementById('speak-button');
+
+    // Attach the speakAboutContent function to the button click
+    speakButton.addEventListener('click', function() {
+        speakAboutContent();
+    });
     });
 
     
