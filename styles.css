@@ -108,6 +108,12 @@ main {
     padding: 8px 8px;
 }
 
+.link-style{
+    display: flex; 
+    gap: 10px; 
+    align-items: center;
+}
+
 .about-me-container {
     display: flex;
     justify-content: flex-start;
