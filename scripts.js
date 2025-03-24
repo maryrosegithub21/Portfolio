@@ -243,8 +243,12 @@ termsModal.addEventListener('click', function(event) {
             });
     });
 
-   let speech = null; // Store the SpeechSynthesisUtterance object
+    let speech = null; // Store the SpeechSynthesisUtterance object
 let isSpeaking = false; // Flag to track if the content is currently being spoken
+let videoPlaying = false;
+let profileVideo;
+let speakIcon;
+let hasPlayedOnce = false;
 
 // Function to speak the about content
 function speakAboutContent() {
@@ -254,7 +258,7 @@ function speakAboutContent() {
     aboutText = aboutText.replace("About Me", ""); // Remove "About Me" heading
     const fullText = "Kia Ora. " + aboutText + " Let's Work Together and Thank you. To get Started, Please make an appointment to understand your vision and discuss how we can make it a reality.";
 
-    if (!isSpeaking) {
+    if (!isSpeaking && !hasPlayedOnce) {
         // If not already speaking, start speaking
         speech = new SpeechSynthesisUtterance(fullText);
         speech.rate = 0.9; // Adjust the speaking rate (0.1 to 10, default is 1)
@@ -274,40 +278,69 @@ function speakAboutContent() {
             speech.voice = femaleVoice;
         }
 
+        speech.onstart = function() {
+            isSpeaking = true;
+            document.getElementById('speak-icon').classList.remove('fa-volume-up');
+            document.getElementById('speak-icon').classList.add('fa-pause');
+            // Play video
+            if (profileVideo) {
+                profileVideo.play();
+                videoPlaying = true;
+            }
+        };
+
+        speech.onend = function() {
+            isSpeaking = false;
+            document.getElementById('speak-icon').classList.remove('fa-pause');
+            document.getElementById('speak-icon').classList.add('fa-volume-up');
+            // Pause video
+            if (profileVideo) {
+                profileVideo.pause();
+                profileVideo.currentTime = 0;
+                videoPlaying = false;
+            }
+            hasPlayedOnce = true;
+        };
+
         window.speechSynthesis.speak(speech);
-        isSpeaking = true;
         sessionStorage.setItem('aboutContentSpoken', 'true'); // Store in session storage
-        document.getElementById('speak-icon').classList.remove('fa-volume-up');
-        document.getElementById('speak-icon').classList.add('fa-pause');
     } else {
         // If already speaking, stop speaking
         window.speechSynthesis.cancel();
         isSpeaking = false;
         document.getElementById('speak-icon').classList.remove('fa-pause');
         document.getElementById('speak-icon').classList.add('fa-volume-up');
+
+        // Pause video
+        if (profileVideo) {
+            profileVideo.pause();
+            profileVideo.currentTime = 0;
+            videoPlaying = false;
+        }
     }
 }
 
-// Trigger on Page Load (integrated into existing DOMContentLoaded)
+
 document.addEventListener('DOMContentLoaded', function() {
     // Check if the content has already been spoken during this session
     if (sessionStorage.getItem('aboutContentSpoken') !== 'true') {
-        // Existing modal functionality...
         // speakAboutContent(); // Remove this line
     }
 
-    // Get the speak button element
     const speakButton = document.getElementById('speak-button');
+    speakIcon = document.getElementById('speak-icon');
+    profileVideo = document.getElementById('profile-video');
 
-    // Attach the speakAboutContent function to the button click
+
     speakButton.addEventListener('click', function() {
         speakAboutContent();
     });
 
-    // Add an event listener to detect when speech ends
     window.speechSynthesis.addEventListener('end', () => {
         isSpeaking = false;
         document.getElementById('speak-icon').classList.remove('fa-pause');
         document.getElementById('speak-icon').classList.add('fa-volume-up');
     });
+
+    
 });
