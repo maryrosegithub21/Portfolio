@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let videoPlaying = false; // Track video playing state
     let speech = new SpeechSynthesisUtterance();
 
+
+    console.log("profile-animation.js loaded");
+    console.log("profileVideo:", profileVideo); // Check if the video element is found
+
+
     // Array of mouth open and close images
     const mouthFrames = [
         'images/profile_mouth_open.png',
